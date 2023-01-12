@@ -1,0 +1,8 @@
+TCP_Listener:
+  - port:9001
+  - key:certs/end.rsa
+  - certs:certs/end.fullchain
+  - cafile:certs/ca.cert
+UDS:
+  - path:/tmp/uds-sink.sock
+  - enable:true

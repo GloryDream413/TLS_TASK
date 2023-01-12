@@ -1,0 +1,31 @@
+Need a TCP/S Listener written in Rust lang.
+It should receive data in stream or newlines from a TCP/S Socket (configurable port & always listen on 0.0.0.0) and send it to a configured sink - uds or tcp or udp or http
+When receiving the data from the tcps (tls) socket, the data should get decrypted (offloaded) and sent to the sink in un encrypted format.
+proposed config.yaml file:
+listeners:
+- name: tcp/s listener 1
+port: 9001
+pem: /path/to/cert_file
+enabled: true
+- name: tcp/s listener 2
+port: 9002
+pem: /path/to/cert_file
+enabled: false
+sinks:
+- name: unix data stream
+type: uds
+path: /tmp/uds-sink.sock
+enabled: true
+- name: console sink
+type: stdout
+enabled: true
+- name: tcp sink
+type: tcp
+port: 8001
+enabled: true
+
+
+
+etc...
+This listener should be able to receive millions of data per second!
+A good readme.md is required to show how to generate the certificate files as well so that the client cert can be placed at the sending device

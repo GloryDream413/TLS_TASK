@@ -1,0 +1,33 @@
+[package]
+name = "rustls-example"
+version = "0.1.0"
+edition = "2021"
+publish = false
+resolver = "2"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+docopt = "1.1.1"
+env_logger = "0.9.1"
+log = "0.4.17"
+mio = { version = "0.8.5", features = ["net", "os-poll"] }
+rustls = "0.20.7"
+rustls-pemfile = "1.0.1"
+sct = "0.7.0"
+serde = "1.0.147"
+serde_derive = "1.0.147"
+webpki-roots = "0.22.5"
+yaml-rust = "0.4"
+
+[[bin]]
+name = "server"
+path = "src/server.rs"
+
+[[bin]]
+name = "client"
+path = "src/client.rs"
+
+[[bin]]
+name = "unixserver"
+path = "src/unixserver.rs"
